@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f3" />
+    <title>How the chart is computed · Palja</title>
+    <meta name="description" content="How Palja computes a four-pillar chart: real solar terms, true solar time, the day count, the ten gods, strength, the decades, the luck curve and compatibility. All on your device." />
+    <meta name="author" content="Vardius" />
+    <meta property="og:title" content="How the chart is computed · Palja" />
+    <meta property="og:description" content="Real astronomy, the classic rules, and scores worked out in the open. Nothing leaves your device." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vardius.github.io/saju/how-it-works.html" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <script type="module" crossorigin src="/saju/assets/index-dr0AxF6u.js"></script>
+    <script type="module" crossorigin src="/saju/assets/article-B0VVlHhB.js"></script>
+    <link rel="stylesheet" crossorigin href="/saju/assets/index-CfMTJuQf.css">
+  </head>
+  <body>
+    <div aria-hidden="true" class="pointer-events-none fixed inset-x-0 top-0 z-50 bg-paper" style="height: max(4px, var(--inset-top))">
+      <div class="flex h-1 w-full"><span class="flex-1 bg-wood"></span><span class="flex-1 bg-fire"></span><span class="flex-1 bg-earth"></span><span class="box-border flex-1 border-y border-ink bg-metal"></span><span class="flex-1 bg-water"></span></div>
+    </div>
+
+    <header class="mx-auto flex max-w-2xl items-center justify-between gap-4 px-6 pt-[calc(var(--inset-top)+1.75rem)]">
+      <a href="./" class="inline-flex items-center gap-2.5 rounded-md text-ink no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-seal">
+        <span aria-hidden="true" lang="ko" class="inline-grid size-9 shrink-0 -rotate-4 place-items-center rounded-[3px] bg-seal font-hanja text-[13px] font-bold text-white" style="box-shadow: inset 0 0 0 2px #b3301c, inset 0 0 0 3px #faf8f3">팔자</span>
+        <span class="font-display text-xl font-semibold tracking-tight">Palja</span>
+      </a>
+      <a href="app/" class="inline-flex min-h-11 items-center gap-1 rounded-md px-2 text-[15px] font-semibold text-ink underline decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-seal">Open the app</a>
+    </header>
+
+    <main class="mx-auto flex max-w-2xl flex-col gap-14 px-6 pt-12 pb-16">
+      <div class="relative flex flex-col gap-4 pr-8">
+        <p class="m-0 text-xs font-semibold tracking-[0.12em] text-ink-2 uppercase">Under the hood</p>
+        <h1 class="m-0 font-display text-[40px] leading-[1.05] font-medium tracking-tight sm:text-[52px]">How the chart is computed</h1>
+        <p class="m-0 max-w-[34rem] text-[19px] leading-normal text-ink-2">Real astronomy, the classic rules, and scores worked out in the open. All of it on your device.</p>
+        <span aria-hidden="true" lang="ko" class="pointer-events-none absolute top-1 right-0 font-hanja text-xs leading-none font-medium tracking-[0.2em] text-ink-2 [writing-mode:vertical-rl]">계산하는 방법</span>
+      </div>
+
+      <section class="flex flex-col gap-4" aria-labelledby="moment">
+        <h2 id="moment" class="m-0 flex flex-wrap items-baseline gap-x-3 font-display text-[28px] leading-tight font-medium"><span aria-hidden="true" class="text-lg text-seal">1</span>The moment of birth <span lang="ko" class="font-hanja text-base font-medium text-ink-2">절기</span></h2>
+        <p class="m-0 text-[15px] text-ink-2">The sun’s position decides the year and the month.</p>
+        <ul role="list" class="m-0 flex list-none flex-col gap-3 p-0">
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The sun is computed for the exact moment of birth.</b> A truncated VSOP87 series (the standard from Meeus’s <em>Astronomical Algorithms</em>) with nutation, aberration and ΔT, so the solar terms land within about a minute of the published ones.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The year turns at Ipchun (입춘)</b>, when the sun reaches 315°, usually on 3 or 4 February. Born before it, you belong to the year before.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Months follow the twelve solar terms</b>, one every 30° of the sun, not the calendar months. The month’s stem follows the year’s by the five-tigers rule.</span></li>
+        </ul>
+      </section>
+
+      <section class="flex flex-col gap-4" aria-labelledby="solar">
+        <h2 id="solar" class="m-0 flex flex-wrap items-baseline gap-x-3 font-display text-[28px] leading-tight font-medium"><span aria-hidden="true" class="text-lg text-seal">2</span>True solar time <span lang="ko" class="font-hanja text-base font-medium text-ink-2">진태양시</span></h2>
+        <p class="m-0 text-[15px] text-ink-2">The clock is corrected before the day and the hour are read.</p>
+        <ul role="list" class="m-0 flex list-none flex-col gap-3 p-0">
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The birthplace’s longitude</b> moves the clock four minutes for every degree away from the zone’s meridian. Seoul runs about 32 minutes behind Korean clock time.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The equation of time</b> adds the sun’s seasonal wobble, up to about 16 minutes either way, from the same solar position.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Time zones and daylight saving</b> come from the time-zone database on your device, historical rules included, so a 1955 birth in Seoul or a summer birth in Warsaw gets the offset it had. A time the clocks skipped is read with the offset from just before the change (02:30 becomes 03:30 summer time); a time they repeated is taken the first time round.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The day changes at solar midnight</b>, and 23:00–00:59 is the Rat hour. An option on the birthplace question keeps the clock time as it was, for anyone who reads without the correction.</span></li>
+        </ul>
+      </section>
+
+      <section class="flex flex-col gap-4" aria-labelledby="table">
+        <h2 id="table" class="m-0 flex flex-wrap items-baseline gap-x-3 font-display text-[28px] leading-tight font-medium"><span aria-hidden="true" class="text-lg text-seal">3</span>The pillars and what sits on them <span lang="ko" class="font-hanja text-base font-medium text-ink-2">십성 · 십이운성</span></h2>
+        <p class="m-0 text-[15px] text-ink-2">The classic tables, before any interpretation.</p>
+        <ul role="list" class="m-0 flex list-none flex-col gap-3 p-0">
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The day pillar</b> comes from the sixty-day count anchored on the Julian Day Number (1 October 1949 was a <span lang="ko">甲子</span> day). The hour pillar uses the two-hour branches and the five-rats rule for its stem.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The ten gods</b> compare each stem, and each branch’s main hidden stem, with the day master by element and polarity.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Life stages</b> (십이운성) follow the day stem around the branches: yang stems forwards from their <span lang="ko">長生</span> branch, yin stems backwards. <b class="font-semibold">Hidden stems</b> (지장간) are listed in the classic 여기, 중기, 정기 order, each with its ten god and its stage on the day branch.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Relationships</b> between pillars: stem bonds (<span lang="ko">合</span>) and clashes (<span lang="ko">沖</span>); for the branches, six harmonies (<span lang="ko">六合</span>), team-ups (<span lang="ko">三合</span>, and <span lang="ko">半合</span> only with the centre animal), clashes, punishments (<span lang="ko">刑</span>), breaks (<span lang="ko">破</span>), harms (<span lang="ko">害</span>), resentments (<span lang="ko">怨嗔</span>) and ghost gates (<span lang="ko">鬼門</span>). Checked against two charts from a Korean 만세력 app.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Special traits</b> (신살) use the usual tables: peach blossom, travelling horse and canopy from the year and day animals, nobleman, blade and scholar from the day stem, moon and heaven virtue from the month, and the void (공망) of the day pillar’s decade.</span></li>
+        </ul>
+      </section>
+
+      <section class="flex flex-col gap-4" aria-labelledby="strength">
+        <h2 id="strength" class="m-0 flex flex-wrap items-baseline gap-x-3 font-display text-[28px] leading-tight font-medium"><span aria-hidden="true" class="text-lg text-seal">4</span>Elements and strength <span lang="ko" class="font-hanja text-base font-medium text-ink-2">오행 · 신강</span></h2>
+        <p class="m-0 text-[15px] text-ink-2">Counts first, then a weighted score.</p>
+        <ul role="list" class="m-0 flex list-none flex-col gap-3 p-0">
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The element balance</b> counts the eight characters you can see, stems and branches alike.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Strength</b> is a score out of 100: the month’s animal counts 40, the day’s animal 15, the other stems 10 each and the other animals 7.5 each. The day master’s own element counts in full and the element that feeds it at 85%. 55 and above is strong, 40 and below is gentle, in between is balanced. The elements that do you good follow from it: a strong day master likes what drains it, a gentle one what feeds it, and a balanced chart, which still leans a little to one side of 50, is helped gently from the side it leans away from. Which element a chart has none of plays no part in this.</span></li>
+        </ul>
+      </section>
+
+      <section class="flex flex-col gap-4" aria-labelledby="timing">
+        <h2 id="timing" class="m-0 flex flex-wrap items-baseline gap-x-3 font-display text-[28px] leading-tight font-medium"><span aria-hidden="true" class="text-lg text-seal">5</span>Timing <span lang="ko" class="font-hanja text-base font-medium text-ink-2">대운 · 세운 · 일진</span></h2>
+        <p class="m-0 text-[15px] text-ink-2">Decades, the curve, and the years, months and days.</p>
+        <ul role="list" class="m-0 flex list-none flex-col gap-3 p-0">
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Decades</b> run forwards for men born in a yang year and women born in a yin year, backwards otherwise. The age the first one starts counts the calendar days to the nearest solar term, both ends included, divides by three and rounds a remainder of two up, which gives the ages Korean 만세력 apps show. Both ends are dated on the clock the day pillar uses.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The luck curve</b> scores each decade from 50: up or down by how its elements suit your day master, a little for the flavour of its ten god, and a little for how its animal gets on with your day’s animal.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Years, months and days</b> are read the same way: the ten god of their stem gives the theme, and their animal is checked against your year and day animals for clashes, harmonies (a six harmony, or a team-up with the centre animal) and star years.</span></li>
+        </ul>
+      </section>
+
+      <section class="flex flex-col gap-4" aria-labelledby="match">
+        <h2 id="match" class="m-0 flex flex-wrap items-baseline gap-x-3 font-display text-[28px] leading-tight font-medium"><span aria-hidden="true" class="text-lg text-seal">6</span>Two people <span lang="ko" class="font-hanja text-base font-medium text-ink-2">궁합</span></h2>
+        <p class="m-0 text-[15px] text-ink-2">The match score, in the open.</p>
+        <ul role="list" class="m-0 flex list-none flex-col gap-3 p-0">
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Partner stars:</b> the ten god each day master is to the other. The power star is the partner star for a woman, the wealth star for a man.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Ties between the charts:</b> every bond and clash between the eight pillars, weighted by importance: day pillar to day pillar ×2, year animals ×1.5, anything touching a day pillar ×1, the rest ×0.5.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">Gifts:</b> an element one chart has none of that the other has at least twice, and a day master whose element does the other good.</span></li>
+          <li class="flex gap-3 text-[17px] leading-relaxed"><span aria-hidden="true" class="mt-[0.6em] size-1.5 shrink-0 bg-seal"></span><span><b class="font-semibold">The score</b> starts at 50, adds those terms, and is kept between 5 and 97, then named from Chaotic to Textbook.</span></li>
+        </ul>
+      </section>
+
+      <section class="flex flex-col gap-4" aria-labelledby="data">
+        <h2 id="data" class="m-0 flex flex-wrap items-baseline gap-x-3 font-display text-[28px] leading-tight font-medium"><span aria-hidden="true" class="text-lg text-seal">7</span>Where your details go <span lang="ko" class="font-hanja text-base font-medium text-ink-2">개인정보</span></h2>
+        <p class="m-0 text-[17px] leading-relaxed">Nowhere. Everything is computed on your phone or in your browser, and nothing is sent to a server: the faces and the list of 34,000 birthplaces ship with the app. A town too small for the list is found on a map, whose images load from OpenFreeMap; your details never go with them. What you enter stays on your device, and Start over in Settings removes it.</p>
+        <p class="m-0 text-[17px] leading-relaxed">It’s for fun, and honest about being for fun.</p>
+      </section>
+
+      <hr class="m-0 border-0 border-t border-hairline" />
+
+      <section class="flex flex-col items-start gap-4" aria-labelledby="yours">
+        <h2 id="yours" class="m-0 font-display text-[28px] leading-tight font-medium">See it on your own chart</h2>
+        <p class="m-0 text-[17px] leading-relaxed">A minute is enough: the day you were born, the time if you know it, and the city.</p>
+        <a href="app/" class="inline-flex min-h-13 items-center justify-center rounded-md bg-ink px-6 text-base font-semibold text-paper no-underline active:bg-ink/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal">Read my chart</a>
+      </section>
+    </main>
+
+    <footer class="mx-auto flex max-w-2xl flex-col gap-2 px-6 pb-[calc(var(--inset-bottom)+2.5rem)] text-[13px] leading-normal text-ink-2">
+      <nav aria-label="Palja pages" class="flex flex-wrap gap-x-4 gap-y-1">
+        <a href="app/" class="text-ink underline decoration-1 underline-offset-4">The app</a>
+        <a href="what-is-saju.html" class="text-ink underline decoration-1 underline-offset-4">What is Saju?</a>
+      </nav>
+      <p class="m-0">Places: GeoNames, CC BY 4.0. Map: OpenFreeMap, © OpenMapTiles, © OpenStreetMap contributors. Faces: Hahmlet, Hanken Grotesk and Noto Serif KR, SIL Open Font License.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f3" />
+    <title>Palja · Your Korean birth chart, in plain words</title>
+    <meta name="description" content="Palja reads Saju (사주), Korea’s traditional birth chart, in plain words. See your first pillars as you type your birthday, then read the whole chart in plain words, and a story about you in twelve chapters, in English, Korean or Japanese. No account; nothing leaves your device." />
+    <meta name="author" content="Vardius" />
+    <meta property="og:title" content="Palja · Your life, written in eight characters" />
+    <meta property="og:description" content="Korea’s traditional birth chart, read to you in plain words. No account; nothing leaves your device." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vardius.github.io/saju/" />
+    <link rel="icon" type="image/svg+xml" href="/saju/icon.svg" />
+    <link rel="apple-touch-icon" href="/saju/apple-touch-icon.png" />
+    <link rel="manifest" href="/saju/manifest.json" />
+    <script>
+      // Old chart links (?d=…) and charts shared with a link (#chart…, #match…) open in the app.
+      (function () {
+        var q = location.search;
+        var h = location.hash;
+        if (/[?&]p?d=/.test(q) || /^#(chart|match)/.test(h)) location.replace('app/' + q + h);
+      })();
+    </script>
+    <script type="module" crossorigin src="/saju/assets/index-BOc0K8Kc.js"></script>
+    <link rel="modulepreload" crossorigin href="/saju/assets/index-dr0AxF6u.js">
+    <link rel="modulepreload" crossorigin href="/saju/assets/textZoom-0YJCQae1.js">
+    <link rel="stylesheet" crossorigin href="/saju/assets/index-CfMTJuQf.css">
+    <link rel="stylesheet" crossorigin href="/saju/assets/textZoom-pOWBkPQP.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
