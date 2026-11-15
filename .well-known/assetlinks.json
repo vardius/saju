@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vardius.saju",
+      "sha256_cert_fingerprints": [
+        "0A:88:10:BA:B6:41:C5:1F:C2:CD:29:94:C9:54:D0:E2:06:FA:BD:55:A0:E1:3C:C5:D7:BD:08:F8:84:20:6C:15",
+        "BF:34:E8:D6:79:25:3B:EC:5C:99:32:EC:E4:70:85:88:AC:F9:6E:90:E6:83:9D:D6:A9:2C:6C:8B:BE:EC:FA:63"
+      ]
+    }
+  }
+]
